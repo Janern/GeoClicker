@@ -29,4 +29,4 @@ Et klikker-spill om behandling av gravesøknader
 	Innkommende henvendelser:
 		- her kan man generere nye henvendelser
 	Generelt
-		- alle saksbehandlere har en lønnsurgift som trekker ned saldoen hvert "tikk"
+		- alle saksbehandlere har en lønnsutgift som trekker ned saldoen hvert "tikk"
