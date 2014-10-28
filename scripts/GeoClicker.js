@@ -10,10 +10,10 @@
         $rootScope.henvendelsePris = 10;
         $rootScope.behandledeGraveskader = 0;
         $rootScope.ubehandledeGraveskader = 0;
-        $rootScope.graveskadePris = 10;
+        $rootScope.graveskadePris = 100;
         $rootScope.behandledePaavisninger = 0;
         $rootScope.ubehandledePaavisninger = 0;
-        $rootScope.paavisningPris = 10;
+        $rootScope.paavisningPris = 50;
 
         $rootScope.tjenPenger = function (antall) {
             $rootScope.geoCash += antall;
