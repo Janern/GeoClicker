@@ -1,0 +1,95 @@
+﻿<div class="row geoclicker-header neon-3d">
+	<span>
+		<h1>
+			Henvendelser
+		</h1>
+	</span>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-4">
+		<span>
+			Tilgjengelige henvendelser: 
+		</span>
+	</div>
+	<div class="col-lg-8">
+		<span class="geoclicker-right-col">
+			{{ubehandledeHenvendelser | henvendelseNumber}}
+		</span>
+	</div>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-4">
+		<span>
+			Behandlede henvendelser: 
+		</span>
+	</div>
+	<div class="col-lg-8">
+		<span class="geoclicker-right-col">
+			{{behandledeHenvendelser | henvendelseNumber}}
+		</span>
+	</div>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-12">
+		<button class="btn-primary btn-block btn-lg" id="behandleHenvendelse"
+					ng-click="behandleHenvendelser(1)">
+				Behandle henvendelse
+		</button>
+	</div>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-4">
+		<span>
+			Saksbehandlere:
+		</span>				
+	</div>
+	<div class="col-lg-8">
+		<span class="geoclicker-right-col">
+			{{antallSaksbehandlere}}
+		</span>
+	</div>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-4">
+		<span>
+			Erfarne saksbehandlere: 
+		</span>
+	</div>
+	<div class="col-lg-8">
+		<span class="geoclicker-right-col">
+			{{antallErfarneSaksbehandlere}}
+		</span>
+	</div>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-8">
+		<span>
+			<button class="btn btn-block btn-lg" id="saksbehandler"
+					ng-click="ansettSaksbehandler(1)"
+					ng-disabled="!harRaad(saksbehandlerKostnad)">
+				Ansett saksbehandler
+			</button>
+		</span>
+	</div>
+	<div class="col-lg-4">
+		<span class="geoclicker-right-col">
+			{{saksbehandlerKostnad | peanutsCurrency:6}} peanuts
+		</span>
+	</div>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-8">
+		<span>
+			<button class="btn btn-block btn-lg" id="erfarenSaksbehandler"
+					ng-click="ansettErfarenSaksbehandler(1)"
+					ng-disabled="erfarenSaksbehandlerKostnad > geoCash">
+				Ansett erfaren saksbehandler
+			</button>
+		</span>
+	</div>
+	<div class="col-lg-4">
+		<span class="geoclicker-right-col">
+			{{erfarenSaksbehandlerKostnad | peanutsCurrency:6}} peanuts
+		</span>
+	</div>
+</div>

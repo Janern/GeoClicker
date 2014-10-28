@@ -1,0 +1,27 @@
+﻿<div class="row geoclicker-header neon-3d">
+	<span>
+		<h1>
+			Innkommende henvendelser
+		</h1>
+	</span>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-4">
+		<span>
+			Registrerte henvendelser: 
+		</span>
+	</div>
+	<div class="col-lg-8">
+		<span class="geoclicker-right-col">
+			{{ubehandledeHenvendelser | henvendelseNumber}}
+		</span>
+	</div>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-12">
+		<button class="btn-primary btn-block btn-lg" id="registrerHenvendelse"
+					ng-click="lagHenvendelse(1)">
+				Registrér henvendelse
+		</button>
+	</div>
+</div>

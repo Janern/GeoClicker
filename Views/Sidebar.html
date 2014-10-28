@@ -1,0 +1,10 @@
+﻿<div class="geoclicker-sidebar">
+	<div class="row">
+		<img src="GeoClickerLogo.png"></img>
+	</div>
+	<div class="row">
+		<span class="geoclicker-inset" ng-class="{red: erTomForCash(), green: !erTomForCash()}">
+			Du har {{geoCash | peanutsCurrency:6}} peanuts
+		</span>
+	</div>
+</div>

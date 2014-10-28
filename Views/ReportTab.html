@@ -1,0 +1,72 @@
+﻿<div class="row geoclicker-header neon-3d">
+	<span>
+		<h1>
+			GeoRapport
+		</h1>
+	</span>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-4">
+		<span>
+			Ufakturerte henvendelser: 
+		</span>
+	</div>
+	<div class="col-lg-8">
+		<span class="geoclicker-right-col">
+			{{behandledeHenvendelser | henvendelseNumber}}
+		</span>
+	</div>
+</div>
+
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-12">
+		<button class="btn-primary btn-block btn-lg" id="fakturerGraveskader"
+					ng-click="fakturerHenvendelser()">
+				Fakturer henvendelser
+		</button>
+	</div>
+</div>
+
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-4">
+		<span>
+			Ufakturerte graveskader: 
+		</span>
+	</div>
+	<div class="col-lg-8">
+		<span class="geoclicker-right-col">
+			{{behandledeGraveskader | henvendelseNumber}}
+		</span>
+	</div>
+</div>
+
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-12">
+		<button class="btn-primary btn-block btn-lg" id="fakturerGraveskader"
+					ng-click="fakturerGraveskader()">
+				Fakturer graveskader
+		</button>
+	</div>
+</div>
+
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-4">
+		<span>
+			Ufakturerte påvisninger: 
+		</span>
+	</div>
+	<div class="col-lg-8">
+		<span class="geoclicker-right-col">
+			{{behandledePaavisninger | henvendelseNumber}}
+		</span>
+	</div>
+</div>
+
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-12">
+		<button class="btn-primary btn-block btn-lg" id="fakturerPaavisninger"
+					ng-click="fakturerPaavisninger()">
+				Fakturer påvisninger
+		</button>
+	</div>
+</div>

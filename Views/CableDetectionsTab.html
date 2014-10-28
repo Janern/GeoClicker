@@ -1,0 +1,67 @@
+﻿<div class="row geoclicker-header neon-3d">
+	<span>
+		<h1>
+			Påvisninger
+		</h1>
+	</span>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-4">
+		<span>
+			Tilgjengelige påvisninger: 
+		</span>
+	</div>
+	<div class="col-lg-8">
+		<span class="geoclicker-right-col">
+			{{ubehandledePaavisninger | henvendelseNumber}}
+		</span>
+	</div>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-4">
+		<span>
+			Behandlede påvisninger: 
+		</span>
+	</div>
+	<div class="col-lg-8">
+		<span class="geoclicker-right-col">
+			{{behandledePaavisninger | henvendelseNumber}}
+		</span>
+	</div>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-12">
+		<button class="btn-primary btn-block btn-lg" id="behandlePaavisning"
+					ng-click="behandlePaavisninger(1)">
+				Utfør påvisning
+		</button>
+	</div>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-4">
+		<span>
+			Påvisninger:
+		</span>				
+	</div>
+	<div class="col-lg-8">
+		<span class="geoclicker-right-col">
+			{{antallPaavisere}}
+		</span>
+	</div>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-8">
+		<span>
+			<button class="btn btn-block btn-lg" id="paaviser"
+					ng-click="ansettPaaviser(1)"
+					ng-disabled="!harRaad(paaviserKostnad)">
+				Ansett påviser
+			</button>
+		</span>
+	</div>
+	<div class="col-lg-4">
+		<span class="geoclicker-right-col">
+			{{paaviserKostnad | peanutsCurrency:6}} peanuts
+		</span>
+	</div>
+</div>

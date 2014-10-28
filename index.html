@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html ng-app="geoClicker">
+<head>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+	<link href="Content/geoclicker.css" rel="stylesheet" />
+    <title>GeoClicker v0.5</title>
+</head>
+<body class="geoclicker-background" ng-controller="IncrementalCtrl">
+    <div class="container-fluid" ng-controller="TabCtrl as tab">
+        <div class="col-lg-9">
+			<tabs></tabs>
+			<tabs-body></tabs-body>
+		</div>
+		<div class="col-lg-3">
+			<sidebar></sidebar>
+		</div>
+	</div>
+</body>
+</html>
+<script src="scripts/angular.js"></script>
+<script src="scripts/GeoClicker.js"></script>
+<script src="scripts/Filters.js"></script>

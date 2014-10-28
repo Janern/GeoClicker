@@ -1,0 +1,82 @@
+.red {
+	color: red;
+}
+
+.green {
+	color: green;
+}
+
+.geoclicker-background {
+	background: #12AAE3;
+}
+
+.geoclicker-button {
+	background-color: blue;
+	width: 100px;
+}
+
+.geoclicker-tab {
+	background-color: green;
+	width: 150px;
+	height: 100%;
+}
+
+.geoclicker-tab-content {
+	
+}
+
+.geoclicker-right-col {
+	float: right;
+}
+
+.geoclicker-sidebar {
+	height: 100%;
+	font-size: 20px;
+}
+.neon{
+	text-shadow: 0 0 10px #fff,
+                   0 0 20px #fff,
+                   0 0 30px #fff,
+                   0 0 40px #ff00de,
+                   0 0 70px #ff00de,
+                   0 0 80px #ff00de,
+                   0 0 100px #ff00de,
+                   0 0 150px #ff00de;
+}
+
+.text-3d{
+	text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #000000,
+               0 3px 0 #000000,
+               0 4px 0 #000000;
+}
+
+.neon-3d{
+	text-shadow: 0 0 10px #fff,
+                   0 0 20px #fff,
+                   0 0 30px #fff,
+                   0 0 40px #ff00de,
+                   0 0 70px #ff00de,
+                   0 0 80px #ff00de,
+                   0 0 100px #ff00de,
+                   0 0 150px #ff00de,
+				   0 1px 0 #ccc,
+				   0 2px 0 #000000,
+				   0 3px 0 #000000,
+				   0 4px 0 #000000;
+}
+.geoclicker-header {
+	text-decoration: underline; 
+	text-align: center;
+	color: #FFFFFF;
+}
+
+.geoclicker-content {
+	font-size: 20px;
+	color: #FFFFFF;
+}
+
+.geoclicker-inset {
+	text-shadow: 0px -2px 0px #1B1C1E,
+                  0px 2px 3px #0F1F2E;
+}

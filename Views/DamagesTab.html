@@ -1,0 +1,67 @@
+﻿<div class="row geoclicker-header neon-3d">
+	<span>
+		<h1>
+			Graveskader
+		</h1>
+	</span>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-4">
+		<span>
+			Tilgjengelige graveskader: 
+		</span>
+	</div>
+	<div class="col-lg-8">
+		<span class="geoclicker-right-col">
+			{{ubehandledeGraveskader | henvendelseNumber}}
+		</span>
+	</div>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-4">
+		<span>
+			Behandlede graveskader: 
+		</span>
+	</div>
+	<div class="col-lg-8">
+		<span class="geoclicker-right-col">
+			{{behandledeGraveskader | henvendelseNumber}}
+		</span>
+	</div>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-12">
+		<button class="btn-primary btn-block btn-lg" id="behandleGraveskade"
+					ng-click="behandleGraveskader(1)">
+				Behandle graveskade
+		</button>
+	</div>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-4">
+		<span>
+			Graveskade-saksbehandlere:
+		</span>				
+	</div>
+	<div class="col-lg-8">
+		<span class="geoclicker-right-col">
+			{{antallGraveskadeSaksbehandlere}}
+		</span>
+	</div>
+</div>
+<div class="row geoclicker-content text-3d">
+	<div class="col-lg-8">
+		<span>
+			<button class="btn btn-block btn-lg" id="saksbehandler"
+					ng-click="ansettGraveskadeSaksbehandler(1)"
+					ng-disabled="!harRaad(graveskadeSaksbehandlerKostnad)">
+				Ansett graveskade-saksbehandler
+			</button>
+		</span>
+	</div>
+	<div class="col-lg-4">
+		<span class="geoclicker-right-col">
+			{{graveskadeSaksbehandlerKostnad | peanutsCurrency:6}} peanuts
+		</span>
+	</div>
+</div>
