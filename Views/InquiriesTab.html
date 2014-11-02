@@ -62,12 +62,21 @@
 	</div>
 </div>
 <div class="row geoclicker-content text-3d">
-	<div class="col-lg-8">
+	<div class="col-lg-4">
 		<span>
 			<button class="btn btn-block btn-lg" id="saksbehandler"
-					ng-click="ansettSaksbehandler(1)"
+					ng-click="ansettSaksbehandlere(1)"
 					ng-disabled="!harRaad(saksbehandlerKostnad)">
 				Ansett saksbehandler
+			</button>
+		</span>
+	</div>
+	<div class="col-lg-4">
+		<span>
+			<button class="btn btn-block btn-lg btn-danger" id="sparkSaksbehandler"
+					ng-click="sparkSaksbehandlere(1)"
+					ng-disabled="!harSaksbehandler()">
+				Spark saksbehandler
 			</button>
 		</span>
 	</div>
@@ -78,12 +87,21 @@
 	</div>
 </div>
 <div class="row geoclicker-content text-3d">
-	<div class="col-lg-8">
+	<div class="col-lg-4">
 		<span>
 			<button class="btn btn-block btn-lg" id="erfarenSaksbehandler"
-					ng-click="ansettErfarenSaksbehandler(1)"
+					ng-click="ansettErfarneSaksbehandlere(1)"
 					ng-disabled="erfarenSaksbehandlerKostnad > geoCash">
 				Ansett erfaren saksbehandler
+			</button>
+		</span>
+	</div>
+	<div class="col-lg-4">
+		<span>
+			<button class="btn btn-block btn-lg btn-danger" id="sparkErfarenSaksbehandler"
+					ng-click="sparkErfarneSaksbehandlere(1)"
+					ng-disabled="!harErfarenSaksbehandler()">
+				Spark erfaren saksbehandler
 			</button>
 		</span>
 	</div>

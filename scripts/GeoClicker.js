@@ -80,17 +80,73 @@
             }
         };
 
-        $scope.ansettSaksbehandler = function (antall) {
-            $scope.antallSaksbehandlere += antall;
-            $scope.brukPenger($scope.saksbehandlerKostnad * antall);
-            $scope.saksbehandlerKostnad = Math.ceil($scope.saksbehandlerKostnad * $scope.saksbehandlerKostnadsfaktor);
+        $scope.ansettSaksbehandlere = function (antall) {
+            for(var i = 0; i < antall; i++){
+				$scope.ansettSaksbehandler();
+			}
         };
 
-        $scope.ansettErfarenSaksbehandler = function (antall) {
-            $scope.antallErfarneSaksbehandlere += antall;
+		
+		$scope.ansettSaksbehandler = function() {
+			$scope.antallSaksbehandlere ++;
+			$scope.brukPenger($scope.saksbehandlerKostnad);
+			$scope.saksbehandlerKostnad = Math.ceil($scope.saksbehandlerKostnad * $scope.saksbehandlerKostnadsfaktor);
+		};
+		
+		$scope.sparkSaksbehandlere = function (antall) {
+			if(antall > $scope.antallSaksbehandlere){
+				for(var i = 0; i < $scope.antallSaksbehandlere; i++){
+					$scope.sparkSaksbehandler();
+				}
+			}else{
+				for(var i = 0; i < antall; i++){
+					$scope.sparkSaksbehandler();
+				}
+			}
+		};
+		
+		$scope.sparkSaksbehandler = function () {
+			$scope.antallSaksbehandlere--;
+			$scope.saksbehandlerKostnad = Math.ceil($scope.saksbehandlerKostnad / $scope.saksbehandlerKostnadsfaktor);
+		};
+		
+		$scope.harSaksbehandler = function() {
+			return $scope.antallSaksbehandlere > 0;
+		};
+			
+		
+        $scope.ansettErfarneSaksbehandlere = function (antall) {
+            for(var i = 0; i < antall; i++){
+				$scope.ansettErfarenSaksbehandler();
+			}
+        };
+		
+		$scope.ansettErfarenSaksbehandler = function () {
+			$scope.antallErfarneSaksbehandlere += antall;
             $scope.brukPenger($scope.erfarenSaksbehandlerKostnad * antall);
             $scope.erfarenSaksbehandlerKostnad = Math.ceil($scope.erfarenSaksbehandlerKostnad * $scope.erfarenSaksbehandlerKostnadsfaktor);
-        };
+		};
+		
+		$scope.sparkErfarneSaksbehandlere = function (antall) {
+			if(antall > $scope.antallErfarneSaksbehandlere){
+				for(var i = 0; i < $scope.antallErfarneSaksbehandlere; i++){
+					$scope.sparkErfarenSaksbehandler();
+				}
+			}else{
+				for(var i = 0; i < antall; i++){
+					$scope.sparkErfarenSaksbehandler();
+				}
+			}
+		};
+		
+		$scope.sparkErfarenSaksbehandler = function () {
+			$scope.antallErfarneSaksbehandlere--;
+			$scope.erfarenSaksbehandlerKostnad = Math.ceil($scope.erfarenSaksbehandlerKostnad / $scope.erfarenSaksbehandlerKostnadfaktor);
+		};
+		
+		$scope.harErfarenSaksbehandler = function() {
+			return $scope.antallErfarneSaksbehandlere > 0;
+		};
 
         // Run UI update code every 1000ms
         $interval(function () {
