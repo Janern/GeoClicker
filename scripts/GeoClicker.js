@@ -212,7 +212,7 @@
 		
 		$scope.sparkGraveskadeSaksbehandler = function () {
 			$scope.antallGraveskadeSaksbehandlere--;
-			$scope.graveskadeSaksbehandlerKostnad = Math.ceil($scope.graveskadeSaksbehandlerKostnad / $scope.graveskadeSaksbehandlerKostnadfaktor)
+			$scope.graveskadeSaksbehandlerKostnad = Math.ceil($scope.graveskadeSaksbehandlerKostnad / $scope.graveskadeSaksbehandlerKostnadsfaktor);
 		};
 
         // Run UI update code every 1000ms
@@ -247,11 +247,38 @@
             $rootScope.behandledePaavisninger++;
         };
 
-        $scope.ansettPaaviser = function (antall) {
-            $scope.antallPaavisere += antall;
-            $scope.brukPenger($scope.paaviserKostnad * antall);
-            $scope.paaviserKostnad = Math.ceil($scope.paaviserKostnad * $scope.paaviserKostnadsfaktor);
+        $scope.ansettPaavisere = function (antall) {
+            for(var i = 0; i < antall; i++){
+				ansettPaaviser();
+			}
         };
+		
+		$scope.ansettPaaviser = function () {
+			$scope.antallPaavisere ++;
+            $scope.brukPenger($scope.paaviserKostnad);
+            $scope.paaviserKostnad = Math.ceil($scope.paaviserKostnad * $scope.paaviserKostnadsfaktor);
+		};
+		
+		$scope.harPaaviser = function () {
+			return  $scope.antallPaavisere > 0;
+		};
+		
+		$scope.sparkPaavisere = function (antall) {
+			if(antall > $scope.antallPaavisere){
+				for(var i = 0; i < $scope.antallPaavisere; i++){
+					$scope.sparkPaaviser();
+				}
+			}else{
+				for(var i = 0; i < antall; i++){
+					$scope.sparkPaaviser();
+				}
+			}
+		};
+		
+		$scope.sparkPaaviser = function () {
+			$scope.antallPaavisere--;
+			$scope.PaaviserKostnad = Math.ceil($scope.paaviserKostnad / $scope.paaviserKostnadsfaktor);
+		};
 
         // Run UI update code every 1000ms
         $interval(function () {
