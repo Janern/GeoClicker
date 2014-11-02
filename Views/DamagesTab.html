@@ -50,12 +50,21 @@
 	</div>
 </div>
 <div class="row geoclicker-content text-3d">
-	<div class="col-lg-8">
+	<div class="col-lg-4">
 		<span>
 			<button class="btn btn-block btn-lg" id="saksbehandler"
 					ng-click="ansettGraveskadeSaksbehandler(1)"
 					ng-disabled="!harRaad(graveskadeSaksbehandlerKostnad)">
 				Ansett graveskade-saksbehandler
+			</button>
+		</span>
+	</div>
+	<div class="col-lg-4">
+		<span>
+			<button class="btn btn-block btn-lg btn-danger" id="sparkGraveskadeSaksbehandler"
+					ng-click="sparkGraveskadeSaksbehandlere(1)"
+					ng-disabled="!harGraveskadeSaksbehandler()">
+				Spark graveskade-saksbehandler
 			</button>
 		</span>
 	</div>

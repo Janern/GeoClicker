@@ -182,11 +182,38 @@
             $rootScope.behandledeGraveskader++;
         };
 
-        $scope.ansettGraveskadeSaksbehandler = function (antall) {
-            $scope.antallGraveskadeSaksbehandlere += antall;
-            $scope.brukPenger($scope.graveskadeSaksbehandlerKostnad * antall);
-            $scope.graveskadeSaksbehandlerKostnad = Math.ceil($scope.graveskadeSaksbehandlerKostnad * $scope.graveskadeSaksbehandlerKostnadsfaktor);
+        $scope.ansettGraveskadeSaksbehandlere = function (antall) {
+            for(var i = 0; i < antall; i++){
+				ansettGraveskadeSaksbehandler();
+			}
         };
+		
+		$scope.ansettGraveskadeSaksbehandler = function () {
+			$scope.antallGraveskadeSaksbehandlere++;
+            $scope.brukPenger($scope.graveskadeSaksbehandlerKostnad);
+            $scope.graveskadeSaksbehandlerKostnad = Math.ceil($scope.graveskadeSaksbehandlerKostnad * $scope.graveskadeSaksbehandlerKostnadsfaktor);
+		};
+		
+		$scope.harGraveskadeSaksbehandler = function () {
+			return $scope.antallGraveskadeSaksbehandlere > 0;
+		};
+		
+		$scope.sparkGraveskadeSaksbehandlere = function (antall) {
+			if(antall > $scope.antallGraveskadeSaksbehandlere){
+				for(var i = 0; i < $scope.antallGraveskadeSaksbehandlere; i++){
+					$scope.sparkGraveskadeSaksbehandler();
+				}
+			}else{
+				for(var i = 0; i < antall; i++){
+					$scope.sparkGraveskadeSaksbehandler();
+				}
+			}
+		};
+		
+		$scope.sparkGraveskadeSaksbehandler = function () {
+			$scope.antallGraveskadeSaksbehandlere--;
+			$scope.graveskadeSaksbehandlerKostnad = Math.ceil($scope.graveskadeSaksbehandlerKostnad / $scope.graveskadeSaksbehandlerKostnadfaktor)
+		};
 
         // Run UI update code every 1000ms
         $interval(function () {
