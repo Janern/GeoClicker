@@ -1,21 +1,52 @@
 ﻿(function () {
     var app = angular.module("geoClicker", ['peanutsFilter', 'henvendelseFilter']);
     app.controller("IncrementalCtrl", function ($rootScope) {
-        $rootScope.henvendelseBaseRate = 1;
-        $rootScope.graveskadeBaseRate = 0.1;
-        $rootScope.paavisningBaseRate = 0.5;
-        $rootScope.geoCash = 0;
-        $rootScope.behandledeHenvendelser = 0;
+        $rootScope.geoCash = 10000;
+		$rootScope.behandledeHenvendelser = 0;
         $rootScope.ubehandledeHenvendelser = 0;
-        $rootScope.henvendelsePris = 10;
-        $rootScope.behandledeGraveskader = 0;
+		$rootScope.behandledeGraveskader = 0;
         $rootScope.ubehandledeGraveskader = 0;
-        $rootScope.graveskadePris = 100;
-        $rootScope.behandledePaavisninger = 0;
+		$rootScope.behandledePaavisninger = 0;
         $rootScope.ubehandledePaavisninger = 0;
-        $rootScope.paavisningPris = 50;
+		
+        $rootScope.henvendelseBaseRate = 1;
+		$rootScope.henvendelseBasePris = 10;
+        
+		$rootScope.graveskadeBaseRate = 0.1;
+		$rootScope.graveskadeBasePris = 100;
+		      
+        $rootScope.paavisningBaseRate = 0.5;
+        $rootScope.paavisningBasePris = 50;
 
-        $rootScope.tjenPenger = function (antall) {
+		$rootScope.bonusHenvendelseRate = 0;
+		$rootScope.bonusHenvendelsePris = 0;
+		$rootScope.bonusGraveskadeRate = 0;
+		$rootScope.bonusGraveskadePris = 0;
+		$rootScope.bonusPaavisningRate = 0;
+		$rootScope.bonusPaavisningPris = 0;
+		
+        $rootScope.henvendelseRate = function() {
+			return $rootScope.henvendelseBaseRate + $rootScope.bonusHenvendelseRate;
+		};
+		$rootScope.henvendelsePris = function() {
+			return $rootScope.henvendelseBasePris + $rootScope.bonusHenvendelsePris;
+		};
+		
+		$rootScope.paavisningRate = function() {
+			return $rootScope.paavisningBaseRate + $rootScope.bonusPaavisningRate;
+		};
+		$rootScope.paavisningPris = function() {
+			return $rootScope.paavisningBasePris + $rootScope.bonusPaavisningPris;
+		};
+		
+		$rootScope.graveskadeRate = function() {
+			return $rootScope.graveskadeBaseRate + $rootScope.bonusGraveskadeRate;
+		};
+		$rootScope.graveskadePris = function() {
+			return $rootScope.graveskadeBasePris + $rootScope.bonusGraveskadePris;
+		};
+		
+		$rootScope.tjenPenger = function (antall) {
             $rootScope.geoCash += antall;
         };
         $rootScope.brukPenger = function (antall) {
@@ -25,11 +56,9 @@
         $rootScope.erTomForCash = function () {
             return $rootScope.geoCash <= 0;
         };
-
         $rootScope.harRaad = function (kostnad) {
             return $rootScope.geoCash >= kostnad;
-        }
-
+        };
     });
 
     app.controller("TabCtrl", function () {
@@ -72,10 +101,10 @@
         $scope.behandleHenvendelse = function () {
             $rootScope.ubehandledeHenvendelser--;
             $rootScope.behandledeHenvendelser++;
-            if (Math.random() < $rootScope.paavisningBaseRate) {
+            if (Math.random() < $rootScope.paavisningRate()) {
                 $rootScope.ubehandledePaavisninger++;
             }
-            if (Math.random() < $rootScope.graveskadeBaseRate) {
+            if (Math.random() < $rootScope.graveskadeRate()) {
                 $rootScope.ubehandledeGraveskader++;
             }
         };
@@ -122,9 +151,9 @@
         };
 		
 		$scope.ansettErfarenSaksbehandler = function () {
-			$scope.antallErfarneSaksbehandlere += antall;
-            $scope.brukPenger($scope.erfarenSaksbehandlerKostnad * antall);
-            $scope.erfarenSaksbehandlerKostnad = Math.ceil($scope.erfarenSaksbehandlerKostnad * $scope.erfarenSaksbehandlerKostnadsfaktor);
+			$scope.antallErfarneSaksbehandlere ++;
+            $scope.brukPenger($scope.erfarenSaksbehandlerKostnad);
+            $scope.erfarenSaksbehandlerKostnad = Math.ceil($scope.erfarenSaksbehandlerKostnad * $scope.erfarenSaksbehandlerKostnadsfaktor);	
 		};
 		
 		$scope.sparkErfarneSaksbehandlere = function (antall) {
@@ -141,7 +170,7 @@
 		
 		$scope.sparkErfarenSaksbehandler = function () {
 			$scope.antallErfarneSaksbehandlere--;
-			$scope.erfarenSaksbehandlerKostnad = Math.ceil($scope.erfarenSaksbehandlerKostnad / $scope.erfarenSaksbehandlerKostnadfaktor);
+			$scope.erfarenSaksbehandlerKostnad = Math.ceil($scope.erfarenSaksbehandlerKostnad / $scope.erfarenSaksbehandlerKostnadsfaktor);
 		};
 		
 		$scope.harErfarenSaksbehandler = function() {
@@ -150,7 +179,7 @@
 
         // Run UI update code every 1000ms
         $interval(function () {
-            $rootScope.ubehandledeHenvendelser += ($rootScope.henvendelseBaseRate);
+            $rootScope.ubehandledeHenvendelser += ($rootScope.henvendelseRate());
             $scope.behandleHenvendelser($scope.antallSaksbehandlere * $scope.saksbehandlerRate);
             $scope.behandleHenvendelser($scope.antallErfarneSaksbehandlere * $scope.erfarenSaksbehandlerRate);
             $rootScope.brukPenger($scope.antallSaksbehandlere * $scope.saksbehandlerLonnsavgift);
@@ -289,15 +318,15 @@
 
     app.controller("ReportCtrl", function ($rootScope, $scope) {
         $scope.fakturerHenvendelser = function () {
-            $scope.tjenPenger(Math.floor($rootScope.behandledeHenvendelser) * $scope.henvendelsePris);
+            $scope.tjenPenger(Math.floor($rootScope.behandledeHenvendelser) * $rootScope.henvendelsePris());
             $rootScope.behandledeHenvendelser -= Math.floor($rootScope.behandledeHenvendelser);
         };
         $scope.fakturerGraveskader = function () {
-            $scope.tjenPenger(Math.floor($rootScope.behandledeGraveskader) * $scope.graveskadePris);
+            $scope.tjenPenger(Math.floor($rootScope.behandledeGraveskader) * $rootScope.graveskadePris());
             $rootScope.behandledeGraveskader -= Math.floor($rootScope.behandledeGraveskader);
         };
         $scope.fakturerPaavisninger = function () {
-            $scope.tjenPenger(Math.floor($rootScope.behandledePaavisninger) * $scope.paavisningPris);
+            $scope.tjenPenger(Math.floor($rootScope.behandledePaavisninger) * $rootScope.paavisningPris());
             $rootScope.behandledePaavisninger -= Math.floor($rootScope.behandledePaavisninger);
         };
     });
@@ -314,7 +343,19 @@
         };
     });
 
-    app.directive("tabs", function () {
+    app.controller("AdminCtrl", function ($rootScope, $scope, $interval) {      
+        $scope.oppgraderinger = [{id: 0, navn: "test", kjopt: false, pris: 10, parent: null}];
+		
+		$scope.kjopOppgradering = function(id){
+			
+		};
+        // Run UI update code every 1000ms
+        $interval(function () {
+            
+        }, 1000);
+    });
+	
+	app.directive("tabs", function () {
         return {
             restrict: 'E',
             templateUrl: "Views/Tabs.html"
