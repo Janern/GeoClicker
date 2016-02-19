@@ -1,7 +1,7 @@
 ﻿(function () {
     var app = angular.module("geoClicker", ['peanutsFilter', 'henvendelseFilter']);
     app.controller("IncrementalCtrl", function ($rootScope) {
-        $rootScope.geoCash = 10000;
+        $rootScope.geoCash = 0;
 		$rootScope.behandledeHenvendelser = 0;
         $rootScope.ubehandledeHenvendelser = 0;
 		$rootScope.behandledeGraveskader = 0;
