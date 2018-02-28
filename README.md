@@ -3,8 +3,6 @@
 
 Et klikker-spill om behandling av gravesøknader
 
-Se www.gdriv.es/geoclicker for siste fungerende verson.
-
 
 -------CHANGELOG-------
 
